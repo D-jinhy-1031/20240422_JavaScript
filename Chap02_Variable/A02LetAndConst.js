@@ -100,3 +100,19 @@ const today = new Date();
 console.log(arr1, typeof arr1);
 console.log(user1, typeof user1);
 console.log(today, typeof today);
+console.log('');
+
+
+// escpe 문자
+console.log('i\'m a boy');
+console.log("i\"m a boy");
+console.log('i \\ m a boy');
+
+// \t는 tab, \n은 줄바꿈
+console.log('i \t\t m a boy');
+console.log('i \n\n\n m a boy');
+console.log('');
+
+
+const uniGA = '\uAC00';
+console.log(uniGA, typeof uniGA);
