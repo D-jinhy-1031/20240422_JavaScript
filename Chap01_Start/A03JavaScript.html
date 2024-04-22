@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A01 JavaScript</title>
+
+  <!-- src가 붙은 script 파일의 태그 사이에 JavaScript 코드를 추가하면 무시된다 -->
+  <script type="text/javascript" src="./src/header.js">
+    document.write('이 구문은 무시됩니다.');
+  </script>
+</head>
+<body>
+  <h1>A02JavaScript</h1>
+
+  <!-- ESMAScript 표준에 따라 type이 "text/javascript"의 경우는 type 속성을 생략할 수 있다 -->
+  <script src="./src/bodyOne.js"></script>
+
+  <h3>Hello World</h3>
+
+  <script type="text/javascript" src="./src/bodyTwo.js"></script>
+
+  <div id="app"></div>
+
+  <h3>Footer...</h3>
+
+  <script type="text/javascript" src="./src/footer.js"></script>
+</body>
+</html>
