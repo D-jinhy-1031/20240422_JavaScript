@@ -4,7 +4,7 @@
 
 GIT
   https://github.com/pxp13716/20240422_JavaScript
-  
+
 
 참조 사이트
   Node                https://nodejs.org/ko/
@@ -28,7 +28,6 @@ GIT
   React               https://ko.legacy.reactjs.org/
   Vue                 https://v3-docs.vuejs-korea.org/
   Angular             https://angular.kr/
-
 
 
 VSCode 기본 설정
