@@ -47,3 +47,17 @@ console.log(`str1 === one1 => ${str1 === one1}`)
 
 console.log('----------------- 3항 연산자-----------------');
 var name = 'NolBu';
+
+// 대소문자 구분
+result = (name === 'NolBu') ? '관리자' : '일반 유저';
+console.log(result);
+console.log('');
+
+// 비교는 항상 숫자가 우선이다
+console.log(1 + 2);       // 3
+console.log('1' + 2);     // '12' 문자열과 +는 이어 붙이기 형태
+console.log(12 < 3);      // false => 숫자비교
+console.log('12' < '3');  // true => unicode 문자 비교
+console.log('12' < 3);    // false => 12가 숫자로 변경된다 
+// false => 숫자로 변경될 수 없는 문자는 NaN(Not a Number) 라는 특수한 값으로 변경된다
+console.log('Hello' < 3); 
