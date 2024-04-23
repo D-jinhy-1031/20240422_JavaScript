@@ -7,8 +7,10 @@ ESLint
     npm i -D eslint 
 
   2. eslint 설정 파일 작성
+    npx eslint --init
+
     npx는 node_modules 내부에 @moduleName이 붙은 모듈을 실행하는 명령
-      npm init @eslint/config 
+      npm init @eslint/create-config@1.0.3 => y
 
        ✔ How would you like to use ESLint? · eslint를 어떻게 사용할 것인가?
 	        To check syntax and find problems
