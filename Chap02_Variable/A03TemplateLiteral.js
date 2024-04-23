@@ -1,3 +1,5 @@
+/* eslint-disable */
+// eslint-disable을 기술하면 eslint가 이 문서를 체크하지 않는다
 console.log('---------------- [088] Template Literals -----------------');
 // ESNext
 const userName = 'NolBu';
@@ -34,6 +36,6 @@ console.log(x + ' + ' + y + ' = ' + x + y + '입니다');
 console.log(x + ' + ' + y + ' = ' + (x + y) + '입니다');
 console.log(`${x} + ${y} = ${x + y}입니다`);
 
-var a = 10;
-var b = 20;
+const a = 10;
+const b = 20;
 console.log(`${a} + ${b} = ${a + b}입니다`);

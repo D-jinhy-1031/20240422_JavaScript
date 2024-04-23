@@ -4,11 +4,15 @@
     "es2021": true,
     "node": true
   },
-  "extends": ["eslint:recommended", "google"],
+  "extends": ["eslint:recommended", "google", "prettier"],
   "parserOptions": {
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
   "rules": {
-  }
+    "prettier/prettier": "off",
+    "object-curly-spacing": "off",
+    "no-multi-spaces": 0
+  },
+  "plugins": ["prettier"]
 }

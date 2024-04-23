@@ -1,18 +1,20 @@
+/* eslint-disable no-redeclare */
+/* eslint-disable no-var */
 console.log('----------------- [105] let, const -----------------');
-// 1. 기존 변수를 재 선언해도 에러 아님. 
+// 1. 기존 변수를 재 선언해도 에러 아님.
 // 호이스팅 과정에서 1개만 만들어짐
 var nickname = 'NolBu';
 var nickname = 'HungBu';
 
 {
   var nickname = 'BangJa';
-  console.log('IN: ' + nickname)
+  console.log('IN: ' + nickname);
 }
 console.log('out nickname: ' + nickname);
 console.log('');
 
 // let
-// ES2015 
+// ES2015
 // ES2015 이후 추가된 명령은 explore는 지원하지 않는다
 
 // var과 동일하게 값에 의해 타입이 결정된다
@@ -30,18 +32,17 @@ console.log('age: ' + age + ', typeof: ' + typeof age);
 // 2. 모든 { }에서 참조 범위(scope)를 갖는다
 {
   // { }내부에서만 참조되는 변수를 지역변수라 한다
-  let age = 300;
-  console.log('in age: ' + age + ', typeof: ' + typeof age);    // 300
+  const age = 300;
+  console.log('in age: ' + age + ', typeof: ' + typeof age); // 300
 }
-console.log('out age: ' + age + ', typeof: ' + typeof age);     // Hello
+console.log('out age: ' + age + ', typeof: ' + typeof age); // Hello
 console.log('');
 
 // 3. window 영역을 오염시키지 않는다
-let alert = 'Hello';
+const alert = 'Hello';
 // window.alert('Good Morning');     // window. 을 붙이지 않으면 에러
-console.log(alert);               // TDZ에 있는 alert 변수 호출
+console.log(alert); // TDZ에 있는 alert 변수 호출
 console.log('');
-
 
 // const => 상수를 정의. 초기화 이후 변수의 값을 변경할 수 없다
 // let와 마찬가지로 1, 2, 3번은 동일하다
@@ -68,6 +69,4 @@ console.log(user);
 
 // user = { name: 'A', address: 'B' };
 // user = 2;
-console.log('');
-
-
+console.log('');      // dfdf

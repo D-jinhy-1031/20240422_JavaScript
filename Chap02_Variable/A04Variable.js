@@ -1,5 +1,5 @@
 console.log('----------------- [079] Type -----------------');
-// 변수의 기본형 
+// 변수의 기본형
 const intValue = 10;
 const floatValue = 10.25;
 const strValue = 'Hello';
@@ -33,6 +33,7 @@ console.log('');
 
 // escpe 문자
 console.log('i\'m a boy');
+// eslint-disable-next-line quotes
 console.log("i\"m a boy");
 console.log('i \\ m a boy');
 
