@@ -73,4 +73,17 @@ while (k <= 100) {        // while (함수()) { }
 console.log(result);
 console.log('');
 
+// confirm() => 확인 => true, 취소 => false
+while (window.confirm()) {
+  console.log('확인을 선택...')
+}
+console.log('');
+
+
 // do~while
+// 실행을 해 봐야 반복 여부를 알 수 있는 경우
+let kor = 0;
+do {
+  kor = window.prompt('점수를 입력해 주세요');
+  console.log(`입력하신 값은 ${kor}입니다`);
+} while (kor < 0 || kor > 100);
