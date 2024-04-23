@@ -33,6 +33,7 @@ obj.address = 'Busan';
 delete obj.address;
 console.log(obj);
 
+// 숨김. for ~ in 구문으로 노출이 안된다 enumerable: false,
 for (const key in obj) {
   if (obj.hasOwnProperty(key)) {
     console.log(obj[key]);
