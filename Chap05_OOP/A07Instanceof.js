@@ -1,5 +1,4 @@
 console.log('----------------- Instanceof -----------------');
-
 function Person(name, age) {
   this.name = name;
   this.age = age;
