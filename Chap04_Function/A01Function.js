@@ -9,9 +9,14 @@ test();
 // 변수는 초기화가 undefined로 초기화
 // 함수는 완벽하게 구현된 상태로 메모리에 올라간다
 function test() {
-  console.log('test function');
+  console.log('test function 01');
 }
-console.log('')
+console.log('');
+
+// 동일한 이름으로 선언된 함수가 있으면 호이스팅 과정에서 덮어 쓴다
+function test() {
+  console.log('test function 02');
+}
 
 console.log('---------------- 선언문 방식의 함수 선언 -----------------');
 // 일반 함수
