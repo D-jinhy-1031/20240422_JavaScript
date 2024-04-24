@@ -13,8 +13,17 @@ const jumsu = (function () {
     return total / num;
   };
 
-  return getName;
+  return {
+    progName,
+    name: getName,
+    getTotal,
+    getAvg,
+  };
 })();
+// default가 붙은 요소는 문서중에 딱 1개만 지정 가능
+export default jumsu;
+// export default x = 10;
 
-const x = 10;
-const y = 20;
+// 개별 export는 default와 함께 사용 가능
+export const x = 10;
+export const y = 20;
