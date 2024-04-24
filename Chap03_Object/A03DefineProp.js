@@ -47,10 +47,16 @@ const user = {
   _address: 'Seoul',
   // 정의는 메서드 형태로 사용은 프로퍼티 형태로 사용
   get name() {
-    return this._name;
+    if (this.age >= 20) {
+      return this._name;
+    } else {
+      return '';
+    }
   },
   set name(x) {
-    this._name = x;
+    if (x !== '') {
+      this._name = x;
+    }
   },
   // 참조만 가능. _age에 직접 접근은 가능
   get age() {

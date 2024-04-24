@@ -12,7 +12,8 @@
   "rules": {
     "prettier/prettier": "off",
     "object-curly-spacing": "off",
-    "no-multi-spaces": 0
+    "no-multi-spaces": 0,
+    "require-jsdoc": 0
   },
   "plugins": ["prettier"]
 }
