@@ -5,7 +5,7 @@ console.log('---------------- [263] Arguments -----------------');
 function onAdd() {
   // 넘어오는 매개변수를 관리하는 유사 배열이다
   // 유사배열 => 객체의 key가 연속된 숫자로 되어 있는 구조
-  // console.log(arguments);
+  console.log(arguments);
   // console.log(arguments.length);
   let total = 0;
   /*

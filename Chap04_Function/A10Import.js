@@ -17,7 +17,7 @@ const dom = `
   Age: ${age} / ${one.age}<br>
   Check: ${check}<br>
   Array: ${arr[0]} / ${arr[1]} / ${arr[100]}<br>
-  Object: ${u.name} / ${u.age} / ${u.address}<br>
+  Object: ${u.name} / ${u.age} / ${u.address} / ${one.user.name}<br>
   function: ${add(20, 30)}<br>
   Program Name: ${two.progName}<br />
   Two Name: ${two.name()}<br>
