@@ -102,3 +102,37 @@ for (let i = 0; i < two.length; i++) {
   total = total + two[i];
 }
 console.log(total);
+console.log('');
+
+// 2차원 배열
+const five = [
+  [1, 10, 11, 100, 101],
+  [2, 20, 21],
+  [3, 30, 32, 300, 301, 3000],
+]
+console.log(five.length);     // 2
+console.log(five[0].length);  // 5
+console.log(five[1].length);  // 3
+
+total = 0;
+for (let i = 0; i < five[0].length; i++) {
+  total = total + five[0][i]
+}
+for (let i = 0; i < five[1].length; i++) {
+  total = total + five[1][i]
+}
+for (let i = 0; i < five[2].length; i++) {
+  total = total + five[2][i]
+}
+console.log(total);
+console.log('');
+
+total = 0;
+// 각 층을 순환
+for (let floor = 0; floor < five.length; floor++) {
+  // 각 층에 방을 순환
+  for (let room = 0; room < five[floor].length; room++) {
+    total = total + five[floor][room];
+  }
+}
+console.log(total);
