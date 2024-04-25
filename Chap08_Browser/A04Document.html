@@ -24,11 +24,21 @@
       <br />
 
       <div>
-        <button>Open</button>
+        <button onclick="openWin()">Open</button>
+        <button onclick="closeWin()">Close</button>
       </div>
     </div>
 
     <script type="text/javascript">
+      let win;
+      const openWin = () => {
+        win = document.open('./A03Screen.html', 'A03', 'width=300,height=500,left=0,top=0')
+      }
+      const closeWin = () => {
+        if(win) win.close();
+      }
+
+
       var characterSet = window.document.characterSet;
       var domain = document.domain;
       var lastModified = document.lastModified;

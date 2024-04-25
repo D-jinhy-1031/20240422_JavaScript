@@ -19,12 +19,27 @@
 
     <script type="text/javascript">
       // Not Escaped => A-Z a-z 0-9 - _ . ! ~ * ' ( )
-      var str = encodeURIComponent("ab123@#$%^&+=!*()_-");
+      var str = encodeURIComponent("ab123@#$%^&+=!*()_-한글");
+      console.log(str);
+      str = decodeURIComponent(str);
       console.log(str);
 
       // Not Escaped => A-Z a-z 0-9 ; , / ? : @ & = + $ - _ . ! ~ * ' ( ) #
-      str = encodeURI("ab123%^&!@#$*()_-+=");
+      str = encodeURI("ab123%^&!@#$*()_-+=한글");
       console.log(str);
+      str = decodeURI(str);
+      console.log(str);
+      console.log('');
+
+      // cookie 
+      // 설정
+
+      // 20초 후에 클라인언트 컴에서 자동 삭제. 브라우저를 닫아도 20초는 유지된다
+      document.cookie = 'name=놀부; max-age=20';    
+      document.cookie = 'age=20';                   // 브라우저 닫으면 즉시 삭제
+
+      // 참조
+      console.log(document.cookie);
     </script>
   </body>
 </html>
