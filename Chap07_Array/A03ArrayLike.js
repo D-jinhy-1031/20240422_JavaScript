@@ -7,3 +7,27 @@ console.log('---------------- [409] Array Like Object -----------------');
 
   HTML DOM의 li 등이 Array Like Object이다.
 */
+
+const arr = {
+  0: 'nolbu',
+  1: 'hungbu',
+  length: 2,
+  push: function (item) {
+    this[this.length] = item;
+    this.length++;
+    return this.length;
+  },
+  pop() {
+    Array.prototype.pop.call(this);
+  }
+}
+console.log(arr[0]);        // nolbu
+console.log(arr[1]);        // hungbu
+console.log(arr.length);    // 2
+console.log(arr);
+
+arr.push(30);
+console.log(arr);
+
+arr.pop();
+console.log(arr);
