@@ -39,7 +39,40 @@
       // document.cookie = 'age=20';                   // 브라우저 닫으면 즉시 삭제
 
       // 참조
-      console.log(document.cookie);
+      // console.log(document.cookie);
+
+      const getCookie = (key) => {
+        const cookies = document.cookie.split('; '); // ['name=놀부', 'age=20']
+        for(let i = 0; i < cookies.length; i++) {
+          const cookie = cookies[i].split('=');       // ['name', '놀부'];
+          const keyName = decodeURIComponent(cookie[0]);
+          if(key === keyName) return decodeURIComponent(cookie[1]);
+        }
+      }
+
+      const setCookie = (name, value, max, path, domain, secure) => {
+        let cookie = '';
+        cookie = `${encodeURIComponent(name)}=${encodeURIComponent(value)}; `;
+        // cookie 유지되는 시간 설정 (초)
+        if(max) cookie + `max-age=${max} `;
+        // / => 서버 루트 폴더. 모든 페이지에서 참조 가능
+        // /product => 서버 루트 하위 product 폴더 내부에서만 참조 가능.
+        if(path) cookie + `path=${path} `;
+        // cookie를 참조할 수 있는 사이트      
+        if(domain) cookie + `domain=${domain} `;
+        // if(secure) cookie + 'secure';   // https
+
+        document.cookie = cookie;
+      }
+
+      // 쿠키 설정
+      setCookie('name', '향단', 60);
+      setCookie('age', 10, 60);
+
+      const name = getCookie('name');
+      const age = getCookie('age');
+      document.getElementById('name').innerHTML = `<b>${name}</b>`;
+      document.getElementById('age').innerHTML = `<b>${age}</b>`;
     </script>
   </body>
 </html>
