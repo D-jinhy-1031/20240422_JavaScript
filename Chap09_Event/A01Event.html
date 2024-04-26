@@ -6,22 +6,45 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
     <title>A01 Event</title>
-    <script type="text/javascript"></script>
   </head>
   <body>
     <div class="card-body">
       <h2>A10 Event</h2>
 
       <div>
-        <button>CLICK</button>
-        <button>CLICK</button>
-
-        <button id="btn01">CLICK</button>
-        <button id="btn02">CLICK</button>
-
+        <button onclick="alert('Hello World')">CLICK 1</button>
+        <button onclick="btn02Event()">CLICK 2</button>
         <!-- inline Event는 예약어 event를 이용 -->
-        <button>CLICK</button>
+        <button id="btn03" onclick="btn03Event(event)">CLICK 3</button>
+
+        <button id="btn04">CLICK 4</button>
+        <button id="btn05">CLICK 5</button>
+
       </div>
     </div>
+
+    <script type="text/javascript">
+      const btn02Event = function() {
+        alert('Good Morning');
+      }
+
+      const btn03Event = function(evt) {
+        alert(`${evt.target.id} / ${evt.target.innerText}`);
+      }
+
+      document.getElementById('btn04').addEventListener('click', function(evt){
+        // evt.target => 이벤트가 발생된 DOM 요소
+        alert(`${evt.target.id} / ${evt.target.innerText}`);
+      });
+
+      const btn05Event = function() {
+        alert(`${evt.target.id} / ${evt.target.innerText}`);
+      }
+      // 값으로만 참조
+      // ()를 치면 그 함수를 실행하고 그 결과값이 대입된다
+      // 즉 document.getElementById('btn05').addEventListener('click', btn05Event());
+      // => document.getElementById('btn05').addEventListener('click', undefined);
+      document.getElementById('btn05').addEventListener('click', btn05Event);
+    </script>
   </body>
 </html>

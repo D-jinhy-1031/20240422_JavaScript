@@ -15,7 +15,47 @@
 
   <script type="text/javascript">
     (function () {
-      
+      let boxX, boxY;
+
+      const box = document.createElement('div');            // <div></div>
+      // const text = document.createTextNode('JavaScript');   // 'JavaScript'
+      // box.appendChild(text);         // <div>JavaScript</div>
+      const text = 'JavaScript';
+      box.append(text);         // <div>JavaScript</div>
+
+      box.style.position = 'fixed';
+      box.style.background = 'lightgray';
+      box.style.color = 'white';
+      box.style.padding = '10px';
+      box.style.left = '100px';
+      box.style.top = '100px';
+
+      const handleMoveEvent = function(evt) {
+        // pageX => 브라우저 좌측 부터 클릭한 포인트까지의 x 축의 거리 
+        // pageY => 브라우저 상단 부터 클릭한 포인트까지의 y 축의 거리
+        box.style.left = evt.pageX - boxX + 'px';
+        box.style.top = evt.pageY - boxY + 'px';
+      }
+
+      box.addEventListener('mousedown', function(evt) {
+        // console.log(evt);
+        // offsetX => 클릭한 요소의 좌측 부터 클릭한 포인트까지의 x축 거리
+        // 클릭한 요소의 좌측 부터 클릭한 포인트까지의 x축 거리
+        boxX = evt.offsetX;
+        boxY = evt.offsetY;
+
+        // 이벤트의 중첩
+        document.addEventListener('mousemove', handleMoveEvent);
+      });
+
+      box.addEventListener('mouseup', function(evt){
+
+        // 이벤트 삭제 => removeEventListener로 지정된 콜백함수의 주소값이 동일해야 한다
+        // 이벤트를 삭제하고자 하는 경우는 이벤트 핸들러를 외부 함수로 분리한다
+        document.removeEventListener('mousemove', handleMoveEvent);
+      })
+
+      document.body.append(box);
     })();
   </script>
 </html>

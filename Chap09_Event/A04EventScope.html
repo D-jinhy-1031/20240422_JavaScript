@@ -6,6 +6,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
     <title>A04 Event</title>
+    <script>
+      // const alert = function() {
+      //   console.log('내가 작성한 alert 함수');
+      // }
+
+
+      // load => 문서마지막까지 에러없이 정상적으로 다 읽은 후 실행
+      window.addEventListener('load', function() {
+        var alert = 'Hello World';
+
+        document.getElementById('btn01').addEventListener('click', function(evt){
+          window.alert(alert);
+        });
+
+        console.log(window)
+      });
+
+      window.addEventListener('error', function() {
+        alert('문서를 읽는 도중 에러가 발생했습니다..');
+      });
+
+      window.addEventListener('resize', function() {
+        console.log('resize')
+      });
+      
+    </script>
   </head>
   <body>
     <div class="card-body">
@@ -14,12 +40,5 @@
       <button id="btn01">CLICK</button>
       <button id="btn02">CLICK</button>
     </div>
-
-    <script>
-      window.addEventListener("load", function () {
-        console.dir(this);
-      });
-      
-    </script>
   </body>
 </html>

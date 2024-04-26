@@ -15,9 +15,16 @@
       <button id="btn02">TWO</button>
     </div>
 
-    <script type="text/javascript">
-      (function () {
-        
+    <script>
+      (function() {
+        // var alert = 'Hello World';
+        const alert = 'Hello World';
+
+        document.getElementById('btn01').addEventListener('click', function(evt){
+          window.alert(alert);
+        });
+
+        console.log(window);
       })();
     </script>
   </body>

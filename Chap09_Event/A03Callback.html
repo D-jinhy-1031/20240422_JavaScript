@@ -18,6 +18,7 @@
     <script type="text/javascript">
       function btnEvent01(evt) {
         console.log('One Button Clicked');
+        // return undefined;
       }
       function btnEvent02(evt) {
         console.log('Two Button Clicked');
@@ -27,7 +28,7 @@
       const two = document.getElementById('btn02');
 
       // 이벤트 핸들러로 호출. 매개변수를 전달하지 않는다. 
-      one.addEventListener('click', btnEvent01);
+      one.addEventListener('click', btnEvent01());    // undefined
       two.addEventListener('click', btnEvent02);
     </script>
   </body>

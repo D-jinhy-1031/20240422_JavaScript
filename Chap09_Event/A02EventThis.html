@@ -18,8 +18,19 @@
 
     <script>
       function clickEvent(evt) {
-        console.log(this);
+        console.log(this);        // window
+        console.log(evt.target);  // button
       };
+
+      document.getElementById('btn01').addEventListener('click', function(evt){
+        console.log(this);        // evt.target
+        console.log(evt.target);  // 이벤트가 발생된 DOM 요소
+      });
+
+      const btn02Event = function() {
+        console.log(this);        // evt.target
+      }
+      document.getElementById('btn02').addEventListener('click', btn02Event);
     </script>
   </body>
 </html>
