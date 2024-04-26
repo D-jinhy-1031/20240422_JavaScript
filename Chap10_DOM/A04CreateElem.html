@@ -12,7 +12,7 @@
       <h2>Create Element (DOM 표준 API 이용)</h2>
 
       <div>
-        <button>두번째 영화 찾기</button>
+        <button name="btn01">두번째 영화 찾기</button>
         <button>마지막에 우유 추가</button>
         <button>첫번째 삭제</button>
       </div>
@@ -33,7 +33,45 @@
       </ul>
     </div>
     <script type="text/javascript">
-      (function () {})();
+      (function () {
+        const btn01 = document.querySelector('button[name="btn01"]');
+        const btn02 = btn01.nextElementSibling;
+        const btn03 = btn02.nextElementSibling;
+        
+        const handleBtn01Event = (evt) => {
+          const movies = document.querySelector('#movies');
+          const firstElem = movies.firstElementChild;
+          if(firstElem && firstElem.nextElementSibling) {
+            const two = firstElem.nextElementSibling.textContent;
+            alert(two);
+          }
+        }
+        const handleBtn02Event = (evt) => {
+          const li = document.createElement('li');
+          const text = document.createTextNode('우유');
+          li.append(text);
+
+          const purchases = document.querySelector('#purchases');
+          // 맨 뒤에 추가된다
+          // purchases.append(li);
+
+          // 지정한 위치에 추가
+          purchases.insertBefore(li, purchases.children[1]);
+        }
+        const handleBtn03Event = (evt) => {
+          const list = document.querySelectorAll('ul');
+
+          for(let i = 0; i < list.length; i++) {
+            const elem = list[i];
+            const firstElem = elem.firstElementChild;
+            if(firstElem) firstElem.remove();
+          }
+        }
+
+        btn01.addEventListener('click', handleBtn01Event);
+        btn02.addEventListener('click', handleBtn02Event);
+        btn03.addEventListener('click', handleBtn03Event);
+      })();
     </script>
   </body>
 </html>

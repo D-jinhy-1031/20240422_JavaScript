@@ -7,7 +7,7 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
     <title>A07 Style / ClassName</title>
     <style type="text/css">
-      .two {
+      .myStyle {
         background-color: aqua;
         color: gray;
         padding: 10px;
@@ -24,6 +24,20 @@
         <div id="two">Class Test</div>
       </div>
     </div>
-    <script type="text/javascript"></script>
+
+    <script type="text/javascript">
+      const one = document.querySelector('#one');
+      one.style.background = 'lightgray';
+      one.style.color = 'white';
+      one.style.padding = '10px';
+      one.style.fontWeight = 'bold';
+      one.style.fontSize = '20pt';
+
+      const two = document.querySelector('#two');
+
+      // react의 JSX 문법에서도 이와같이 JavaScript 속성명 지정 방식을 사용한다
+      // <div className="myStyle"></div> => JSX
+      two.className = 'myStyle'
+    </script>
   </body>
 </html>

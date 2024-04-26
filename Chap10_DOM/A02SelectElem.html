@@ -14,15 +14,50 @@
       <div>
         <div id="title" class="c">Event의 함수는 익명 함수</div>
 
+        <div>
+          <input type="text" class="form-control" name="address">
+          <input type="text" class="form-control" name="age">
+        </div>
+
         <ul>
           <li>List 01</li>
           <li>List 02</li>
           <li>List 03</li>
         </ul>
 
-        <button id="click" class="btn">Click</button>
+        <button id="click01" class="c" name="address">Click 1</button>
+        <button id="click02" class="c">Click 2</button>
       </div>
     </div>
-    <script></script>
+    <script>
+      // id 이름으로 처음 매칭되는 요소를 찾아 반환
+      const btn01 = document.getElementById('click01');
+      console.log(btn01.innerText);
+
+      // class로 찾기. class 이름이 c인 모든 요소를 찾아 유사배열로 반환
+      const nameC = document.getElementsByClassName('c');
+      console.log(nameC);
+
+      // tag 이름으로 찾기. tab 이름이 button인 모든 요소를 찾아 유사배열로 반환
+      const btns = document.getElementsByTagName('button');
+      console.log(btns);
+
+      // 속성 이름 값으로 찾기. 속성 name의 값이 지정한 값의 모든 요소를 찾아 유사배열로 반환
+      const add = document.getElementsByName('address');
+      console.log(add);
+      console.log('');
+
+      // querySelector
+      // querySelector => 처음 발견된 요소 1개만 반환
+      const btn02 = document.querySelector('#click01');
+      console.log(btn02.innerText);
+
+      const c = document.querySelector('.c');
+      console.log(c);
+      
+      // 전체를 유사배열로 반환한다
+      const cAll = document.querySelectorAll('.c');
+      console.log(cAll);
+    </script>
   </body>
 </html>

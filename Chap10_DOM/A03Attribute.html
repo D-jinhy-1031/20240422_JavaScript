@@ -23,6 +23,61 @@
       </form>
       <div id="result"></div>
     </div>
-    <script type="text/javascript"></script>
+
+    <script type="text/javascript">
+      const google = document.querySelector('a[href="http://www.google.com"]');
+      const hrefAttr = google.getAttribute('href');
+
+      const name = document.querySelector('input[name="name"]');
+      // console.dir(name);
+
+      // HTML의 요소에 속성을 추가한다
+      name.setAttribute('value', hrefAttr);
+      
+      // DOM의 JavaScript의 속성의 값을 변경 => HTML 요소에는 변동 없음
+      // name.value = hrefAttr;
+
+      // 속성이 있는지 참조
+      if(!google.hasAttribute('title')) {
+        google.setAttribute('title', 'Google로 이동합니다..');
+      };
+
+      // 전체 속성 참조
+      const attrs = google.attributes;
+      // console.log(attrs);
+      for(var i = 0; i < attrs.length; i++) {
+        const attr = attrs[i];
+        console.log(`${attr.name} / ${attr.value}`);
+      }
+
+      document.querySelector('button[type="submit"]').addEventListener('click', function(evt){
+        evt.preventDefault();
+
+        const sendData = {};
+        /*
+        const nameVal = document.querySelector('input[name="name"]').value;
+        const ageVal = document.querySelector('input[name="age"]').value;
+        const pwVal = document.querySelector('input[name="pw"]').value;
+        
+        sendData.name = nameVal;
+        sendData.age = ageVal;
+        sendData.pw = pwVal;
+        */
+
+        const formElem = document.querySelector('form').children;
+        // console.log(formElem);
+
+        for(let i = 0; i < formElem.length; i++) {
+          const elem = formElem[i];
+
+          if(elem.nodeType === 1 && elem.nodeName === 'INPUT') {
+            const attr = elem.getAttribute('name');   // name, age, pw
+            sendData[attr] = elem.value;
+          }
+        }
+
+        console.log(sendData);
+      })
+    </script>
   </body>
 </html>
