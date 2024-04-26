@@ -11,27 +11,56 @@
     <div class="card-body">
       <h3>게시물 추가</h3>
 
-      Name: <input type="text" class="form-control" name="name" /> Tel: <input type="text" class="form-control" name="tel" /> Address:
-      <input type="text" class="form-control" name="address" />
+      Name: <input type="text" class="form-control" name="name" /> 
+      Tel: <input type="text" class="form-control" name="tel" /> 
+      Address: <input type="text" class="form-control" name="address" />
       <br />
 
-      <button class="btn btn-primary" id="send">ADD</button>
+      <button class="btn btn-primary" id="add">ADD</button>
+      <button class="btn btn-primary" id="list">LIST</button>
     </div>
 
     <script type="text/javascript">
-      document.querySelector('#send').addEventListener('click', function () {
+      const baseURL = 'https://sample.bmaster.kro.kr/contacts/';
+
+      document.querySelector('#add').addEventListener('click', function (evt) {
         const name = document.querySelector('input[name="name"]').value;
         const tel = document.querySelector('input[name="tel"]').value;
         const address = document.querySelector('input[name="address"]').value;
 
+        // 각 필드의 값이 빈 문자열 등의 처리를 해야 한다
+
         const sendData = {
           name: name,
           tel: tel,
-          address: address,
+          address,
         };
 
-        const baseURL = 'https://sample.bmaster.kro.kr/contacts/';
+        fetch(`${baseURL}`, {
+          method: 'POST',
+          // JavaScript 객체 => JSON data로 변경 => JSON.stringify(sendData)
+          // JSON data => JavaScript => JSON.parse(jsonData)
+          body: JSON.stringify(sendData),
+          headers: {'Content-Type': 'application/json'}
+        })
+          .then((resp) => {
+            return resp.json();
+          })
+          .then((data) => {
+            console.log(data)
+            if(data.status === 'success') alert('추가 성공');
+            else if(data.status === 'fail') alert('추가 실패');
+            location.assign('contactList.html');
+          })
+          .catch((error) => {
+            console.error(error);
+            alert('잠시 후 다시 시도해 주세요..')
+          })
       });
+
+      document.querySelector('#list').addEventListener('click', function(){
+        location.assign('contactList.html');
+      })
     </script>
   </body>
 </html>
