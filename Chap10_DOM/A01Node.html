@@ -18,6 +18,49 @@
       </ul>
     </div>
 
-    <script type="text/javascript"></script>
+    <script type="text/javascript">
+      const child = document.childNodes;
+      console.log(child);
+      console.log(document.parentNode);     // null
+      console.log(child[1].childNodes);     // 줄바꿈도 하나의 text node로 취급
+      console.log('');
+
+      const list = document.querySelector('#list');
+      console.log(list);
+      console.log(list.childNodes);   // [text, li, text, li, text, li, text]
+
+      // 첫번째 요소
+      console.log(list.firstChild);   // text(줄바꿈)
+      console.log(list.firstChild.nextSibling.textContent);   // 리스트 01
+      console.log(list.firstChild.nextSibling.nextSibling);   // text
+
+      // 마지막 요소
+      console.log(list.lastChild);    // text
+      console.log(list.lastChild.previousSibling.textContent);  // 리스트 03
+      console.log('');
+
+      /*
+        1: Element,
+        2: Attribute
+        3: Text
+        4: CData
+        8: 주석
+      */
+
+      // Type, Name
+      console.log(list.nodeType);             // 1
+      console.log(list.firstChild.nodeType);  // 3
+      // 항상 대문자로 표시된다
+      console.log(list.nodeName);
+      console.log('');
+
+      // Element만 참조
+      console.log(list.children);           // [li, li, li]
+      console.log(list.firstElementChild.textContent);        // 리스트 01 
+      console.log(list.firstElementChild.nextElementSibling); // 리스트 02
+
+      console.log(list.lastElementChild.textContent);   // 리스트 03
+      console.log(list.lastElementChild.previousElementSibling.textContent);   // 리스트 02
+    </script>
   </body>
 </html>
