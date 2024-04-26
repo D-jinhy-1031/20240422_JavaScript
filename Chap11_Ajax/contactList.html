@@ -20,7 +20,9 @@
             <th>Img</th>
           </tr>
         </thead>
-        <tbody id="tbody"></tbody>
+        <tbody id="tbody">
+
+        </tbody>
         <tfoot>
           <tr>
             <td colspan="4">
@@ -33,6 +35,60 @@
 
     <script type="text/javascript">
       const baseURL = 'https://sample.bmaster.kro.kr/contacts/';
+      const tbody = document.querySelector('#tbody');
+
+      const getContactList = (no=1, size=10) => {
+        // HTML 5 => fetch
+        // explore => axios
+        fetch(`${baseURL}?pageno=${no}&pagesize=${size}`)
+          .then((resp) => {
+            // console.log(resp);
+            return resp.json();       // resp.text();
+          })
+          .then((data) => {
+            // console.log(data);
+            data.contacts.forEach((contact, idx) => {
+              const tr = document.createElement('tr');    // <tr></tr>
+
+              const keys = Object.keys(contact);    // ['no', 'name', 'tel', 'address', 'photo'];
+              // 객체의 key의 수 만큼 td를 생성
+              keys.forEach((key) => {
+                const td = document.createElement('td');
+                const text = document.createTextNode(contact[key]);
+
+                if(key === 'name') {
+                  const link = document.createElement('a');
+                  link.setAttribute('href', `viewItem.html?no=${contact.no}`);
+                  link.appendChild(text);     // <a href="viewItem.html">text</a>
+                  td.appendChild(link);
+                } else if(key === 'photo') {
+                  const photo = document.createElement('img');
+                  photo.setAttribute('src', contact.photo);
+                  photo.setAttribute('alt', '증명사진');
+                  photo.setAttribute('width', '50px');
+                  td.appendChild(photo);
+                } else {
+                  td.appendChild(text);
+                }
+                tr.appendChild(td);
+                tbody.appendChild(tr);
+              })
+            })
+          })
+          .catch((error) => {
+            console.error(error);
+            alert('로드 실패.. 잠시 후 다시 이용해 주세요')
+          })
+          .finally(() => {
+
+          })
+      }
+
+      getContactList(1, 5);
+
+      document.querySelector('#addBtn').addEventListener('click', function(evt){
+        location.assign('addItem.html');
+      })
     </script>
   </body>
 </html>

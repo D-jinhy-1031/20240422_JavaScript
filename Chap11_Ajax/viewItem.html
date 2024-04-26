@@ -11,15 +11,70 @@
     <div class="card-body">
       <h3>게시물 상세보기</h3>
 
-      Name: <input type="text" class="form-control" name="name" readonly /> Tel:
-      <input type="text" class="form-control" name="tel" readonly /> Address: <input type="text" class="form-control" name="address" readonly />
+      Name: <input type="text" class="form-control" name="name" readonly /> 
+      Tel: <input type="text" class="form-control" name="tel" readonly /> 
+      Address: <input type="text" class="form-control" name="address" readonly />
       <br />
 
-      <button class="btn btn-primary">LIST</button>
+      <button class="btn btn-primary" id="list">LIST</button>
+      <button class="btn btn-primary" id="add">ADD</button>
+      <button class="btn btn-primary" id="delete">DELETE</button>
     </div>
 
     <script type="text/javascript">
       const baseURL = 'https://sample.bmaster.kro.kr/contacts/';
+      const search = location.search.split('=');      // ['no', '660c0cd7c919ff00083081d2']
+      // console.log(search);
+
+      const getContact = (no) => {
+        fetch(`${baseURL}${no}`)
+          .then((resp) => {
+            return resp.json();
+          })
+          .then((data) => {
+            // console.log(data);
+            document.querySelector('input[name="name"]').value = data.name;
+            document.querySelector('input[name="tel"]').value = data.tel;
+            document.querySelector('input[name="address"]').value = data.address;
+          })
+          .catch((error) => {
+            console.log(error)
+            alert('상세 정보를 참조할 수 없습니다');
+          })
+      }
+
+      const deleteContact = (no) => {
+        fetch(`${baseURL}${no}`, {
+          method: 'DELETE',
+          body: {},             // 서버에 전송할 값
+          headers: { },         // header 정보값
+        })
+        .then((resp) => {
+          return resp.json();
+        })
+        .then((data) => {
+          if(data.status === 'success') alert('삭제 성공');
+          else if(data.status === 'fail') alert('삭제 실패');
+
+          location.assign('./contactList.html');
+        })
+        .catch((error) => {
+          console.error(error)
+          alert('잠시후 다시 시도해 주세요...')
+        })
+      }
+
+      document.querySelector('#delete').addEventListener('click', function(evt) {
+        deleteContact(search[1]);
+      });
+      document.querySelector('#list').addEventListener('click', function(evt) {
+        location.assign('./contactList.html');
+      });
+      document.querySelector('#add').addEventListener('click', function(evt) {
+        location.assign('./addItem.html');
+      });
+
+      getContact(search[1]);
     </script>
   </body>
 </html>
