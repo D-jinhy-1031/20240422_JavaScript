@@ -12,15 +12,54 @@
       <h2>A09 Event This</h2>
 
       <div>
-        <button id="btn01">CLICK</button>
-        <button id="btn02">CLICK</button>
-        <button id="btn03">CLICK</button>
+        <button id="btn01">CLICK 1</button>
+        <button id="btn02">CLICK 2</button>
+        <button id="btn03">CLICK 3</button>
+        <button id="btn04">CLICK 4</button>
+        <button id="btn05">CLICK 5</button>
       </div>
     </div>
 
     <script type="text/javascript">
       (function () {
+        document.querySelector('#btn01').addEventListener('click', function(evt){
+          evt.target.style.background = 'orange';
+        });
+
+        const btn02Event = function(evt) {
+          evt.target.style.background = 'orange';
+        }
+        // 호출하는 이벤트 핸들러에 묵시적으로 event를 전달해 준다
+        document.querySelector('#btn02').addEventListener('click', btn02Event);
+
+        // addEventListener는 전달한 callback 함수에 오로지 event 객체 1개만 주입해서 실행한다
+        // color => undefined
+        document.querySelector('#btn03').addEventListener('click', function(evt, color){
+          console.log(color);
+          evt.target.style.background = color;
+        });
+
+        const btn04Event = function(evt, color) {
+          evt.target.style.background = color;
+        }
+        document.querySelector('#btn04').addEventListener('click', btn04Event);
+
+
+        const btn05Event = function(evt, color) {
+          evt.target.style.background = color;
+        }
+
+        document.querySelector('#btn05').addEventListener('click', function(evt) {
+          btn05Event(evt, 'lightgreen');
+        });
+
+        // React에서 매개변수가 있는 경우 inline에서 
+        // onClick={(evt) => btn05Event(evt, 'orange')} 식으로 사용한다
+        // 매개변수가 없다면
+        // onClick={btn05Event} 식으로 사용한다
         
+        // document.querySelector('#btn05').addEventListener('click', (evt) => btn05Event(evt, 'lightgreen'));
+
       })();
     </script>
   </body>

@@ -14,12 +14,47 @@
       <input type="text" name="name" class="form-control" />
       <button>CLICK</button>
       <br />
+
+      <input type="text" name="age" class="form-control" value="미리표시됨" />
       <div id="result"></div>
     </div>
   </body>
 
   <script type="text/javascript">
     (function () {
+      // querySelector는 요소를 CSS 적용 기법으로 기술하여 참조한다
+      // querySelector => 처음 매칭된 요소 1개
+      // querySelectorAll => 매칭되는 모든 요소를 유사배열로 리턴한다
+
+      // keyup, keydown, keypress (키보드를 누르고 있는 동안)
+      document.querySelector('input[name="name"]').addEventListener('keyup', function(evt){
+        // keyup, keydown, keypress에만 존재
+        const code = evt.code;
+        const key = evt.key;
+        const keyCode = evt.keyCode;
+        console.log(`Code: ${code}, Key: ${key}, KeyCode: ${keyCode}`);
+
+        // 이 속성은 모든 event에 있음
+        console.log(`Shift: ${evt.shiftKey}, Alt: ${evt.altKey}, Ctrl: ${evt.ctrlKey}, Meta: ${evt.metaKey}`)
+
+        if(evt.keyCode === 65 && evt.ctrlKey) location.assign('http://www.google.com');
+      });
+
+      // oninput => 사용자가 지정 필드에 값을 입력할때마다 발생
+      // onchange => 사용자가 지정 필드에 값을 입력을 끝내고 다른 필드로 포커스가 이동한 시점
+
+      // react에서는 input event를 change로 사용한다
+      document.querySelector('input[name="age"]').addEventListener('input', function(evt){
+        // console.log(evt.target.value);
+        // evt에 keyCode, code, key 속성은 존재하지 않는다
+        document.querySelector('#result').textContent = evt.target.value;
+      });
+
+      // 일반 DOM 요소도 ctrlKey, altKey, shiftKey, metaKey에 대한 참조는 존재한다
+      document.querySelector('button').addEventListener('click', function(evt){
+        // console.log(evt);
+        if(evt.shiftKey) location.assign('http://www.google.com');
+      });
       
     })();
   </script>
